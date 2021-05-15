@@ -1,0 +1,127 @@
+
+
+
+.Goalkeepers{
+    display:flex;
+    margin: 10px auto;
+    width: max-content;
+    height: max-content;
+    
+}
+
+.Goalkeeper{
+    border: solid black;
+    width: 4em;
+    height: 4em;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 4em;
+    background-color: yellow;
+}
+
+.Defenders{
+    display: flex;
+    margin: 10px auto;
+    width: max-content;
+    height: max-content;
+}
+
+.Defender{
+    border: solid black;
+    margin: 20px;
+    width: 4em;
+    height: 4em;
+    background-color: darkblue;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 4em;
+}
+
+.Midfielders{
+    display: flex;
+    margin: 10px auto;
+    width: max-content;
+    height: max-content;
+}
+
+.Midfielder{
+    border: solid black;
+    margin: 20px;
+    width: 4em;
+    height: 4em;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 4em;
+    background-color: darkgreen;
+}
+
+.Strikers{
+    display: flex;
+    margin: 10px auto;
+    width: max-content;
+    height: max-content;
+}
+
+.Striker{
+    border: solid black;
+    margin: 20px;
+    width: 4em;
+    height: 4em;
+    background-color: darkred;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 4em;
+}
+
+.formation{
+    width:25%;
+    height:25%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+   
+}
+
+/*.small{
+    background-color: blue;
+    width: 2em;
+    height: 2em;
+    margin: auto;
+}*/
+
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+
+.dropbtn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+  }
+  
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content button {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content button:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
