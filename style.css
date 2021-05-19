@@ -91,14 +91,7 @@
 
 }
 
-/*.small{
-    background-color: blue;
-    width: 2em;
-    height: 2em;
-    margin: auto;
-}*/
-
-.dropdown-h{
+/*.dropdown-h{
     position: relative;
     display: inline-block;
 }
@@ -171,6 +164,8 @@
   .dropdown-a:hover .dropdown-content-a {display: block;}
   
   .dropdown-a:hover .dropbtn-a {background-color: #aa0f04;}
+  */
+  
 
 
 
