@@ -6,13 +6,8 @@ class Formation{
 
     constructor(formationText, team = "home"){
         this.formationText = formationText;
-        
         this.team = team;
-        
-        
-        this.uniquePositions = null;
-        
-
+        //this.displayFormation(formationText);
     }
 
     updateFormation(formationText){
@@ -41,8 +36,6 @@ class Formation{
         Formation.awayTeam -= 1;
     }
 
-
-    
 
     displayFormation(formationText){
         console.log(Formation.homeTeam, Formation.awayTeam);
@@ -88,6 +81,8 @@ class Formation{
             gks.appendChild(gk);
             gk.innerText = 1;
             gk.setAttribute("contenteditable", "true");
+            gks.style.borderBottom = "solid white";
+            gk.style.backgroundColor = "yellow";
 
             const defenders = document.createElement("div");
             const midfielders = document.createElement("div");
@@ -111,6 +106,8 @@ class Formation{
                         defender.innerText = shirtNum;
                         shirtNum += 1;  
                         defender.setAttribute("contenteditable", "true");
+                        defender.setAttribute("id", "home" + String(shirtNum));
+                        defender.style.backgroundColor = "blue";
                     }  
                 
                 
@@ -124,6 +121,8 @@ class Formation{
                         midfielder.innerText = shirtNum;  
                         shirtNum += 1;
                         midfielder.setAttribute("contenteditable", "true");
+                        midfielder.setAttribute("id", "home" + String(shirtNum));
+                        midfielder.style.backgroundColor = "blue";
                     }
             
                 
@@ -137,6 +136,8 @@ class Formation{
                         striker.innerText = shirtNum; 
                         shirtNum += 1;
                         striker.setAttribute("contenteditable", "true");
+                        striker.setAttribute("id", "home" + String(shirtNum));
+                        striker.style.backgroundColor = "blue";
                     }
 
                     break;
@@ -158,6 +159,8 @@ class Formation{
                         defender.innerText = shirtNum;
                         shirtNum += 1;  
                         defender.setAttribute("contenteditable", "true");
+                        defender.setAttribute("id", "home" + String(shirtNum));
+                        defender.style.backgroundColor = "blue";
                     }  
                 
                
@@ -171,6 +174,8 @@ class Formation{
                         midfielder.innerText = shirtNum;  
                         shirtNum += 1;
                         midfielder.setAttribute("contenteditable", "true");
+                        midfielder.setAttribute("id", "home" + String(shirtNum));
+                        midfielder.style.backgroundColor = "blue";
                     }
 
                     const aMidfielders = document.createElement("div");
@@ -184,6 +189,8 @@ class Formation{
                         aMidfielder.innerText = shirtNum;  
                         shirtNum += 1;
                         aMidfielder.setAttribute("contenteditable", "true");
+                        aMidfielder.setAttribute("id", "home" + String(shirtNum));
+                        aMidfielder.style.backgroundColor = "blue";
                     }
             
                 
@@ -197,16 +204,17 @@ class Formation{
                         striker.innerText = shirtNum; 
                         shirtNum += 1;
                         striker.setAttribute("contenteditable", "true");
+                        striker.setAttribute("id", "home" + String(shirtNum));
+                        striker.style.backgroundColor = "blue";
                     }
 
                     break;
 
                     default:
-                        console.log("uh oh");
+                        break;
 
             }
             Formation.homeTeam+=1;
-
         }
 
         else {
@@ -222,6 +230,7 @@ class Formation{
             const midfielders = document.createElement("div");
             const defenders = document.createElement("div");
             const gks = document.createElement("div");
+            gks.style.borderTop = "solid white";
 
             shirtNum = 11;
             
@@ -242,6 +251,8 @@ class Formation{
                         striker.innerText = shirtNum; 
                         shirtNum -= 1;
                         striker.setAttribute("contenteditable", "true");
+                        striker.setAttribute("id", "away" + String(shirtNum));
+                        striker.style.backgroundColor = "red";
                     }
 
                     midfielders.classList.add('Midfielders');
@@ -254,6 +265,8 @@ class Formation{
                         midfielder.innerText = shirtNum;  
                         shirtNum -= 1;
                         midfielder.setAttribute("contenteditable", "true");
+                        midfielder.setAttribute("id", "away" + String(shirtNum));
+                        midfielder.style.backgroundColor = "red";
                     }
 
                     defenders.classList.add('Defenders');
@@ -266,6 +279,8 @@ class Formation{
                         defender.innerText = shirtNum;
                         shirtNum -= 1;  
                         defender.setAttribute("contenteditable", "true");
+                        defender.setAttribute("id", "away" + String(shirtNum));
+                        defender.style.backgroundColor = "red";
                     }  
                     break;
 
@@ -285,6 +300,8 @@ class Formation{
                         striker.innerText = shirtNum; 
                         shirtNum -= 1;
                         striker.setAttribute("contenteditable", "true");
+                        striker.setAttribute("id", "away" + String(shirtNum));
+                        striker.style.backgroundColor = "red";
                     }
 
                     const aMidfielders = document.createElement("div");
@@ -298,6 +315,8 @@ class Formation{
                         aMidfielder.innerText = shirtNum;  
                         shirtNum -= 1;
                         aMidfielder.setAttribute("contenteditable", "true");
+                        aMidfielder.setAttribute("id", "away" + String(shirtNum));
+                        aMidfielder.style.backgroundColor = "red";
                     }
 
                     midfielders.classList.add('Midfielders');
@@ -310,6 +329,8 @@ class Formation{
                         midfielder.innerText = shirtNum;  
                         shirtNum -= 1;
                         midfielder.setAttribute("contenteditable", "true");
+                        midfielder.setAttribute("id", "away" + String(shirtNum));
+                        midfielder.style.backgroundColor = "red";
                     }
 
                     defenders.classList.add('Defenders');
@@ -322,6 +343,8 @@ class Formation{
                         defender.innerText = shirtNum;
                         shirtNum -= 1;  
                         defender.setAttribute("contenteditable", "true");
+                        defender.setAttribute("id", "away" + String(shirtNum));
+                        defender.style.backgroundColor = "red";
                     }  
 
                     break;
@@ -337,9 +360,14 @@ class Formation{
             gks.appendChild(gk);
             gk.innerText = 1;
             gk.setAttribute("contenteditable", "true");
+            gk.style.backgroundColor = "purple";
             Formation.awayTeam+=1;
         }
         Formation.numFormations+=1;
+        $(".Goalkeeper").draggable();
+        $(".Defender").draggable();
+        $(".Midfielder").draggable();
+        $(".Striker").draggable();
     }
 
 
@@ -355,9 +383,7 @@ let inputAway = document.getElementsByName("formation-away")[0];
 
 let homeFormationText;
 let awayFormationText;
-let formationText;
-
-//const formation = new Formation(homeFormationText, awayFormationText);
+let formationText;// = "4-4-2;
 
 const homeFormation = new Formation(formationText);
 const awayFormation = new Formation(formationText,"away");
@@ -384,22 +410,8 @@ inputAway.addEventListener("input", () => {
 function displayClear(){
     homeFormation.displayClearHome();
     awayFormation.displayClearAway();
-    /*let delHomeFormation = document.querySelector('.home-formation');
-    let delAwayFormation = document.querySelector('.away-formation');
-    if (delHomeFormation == null && delAwayFormation == null){
-        return;
-    }
-    else if(delHomeFormation == null){
-        delAwayFormation.remove();
-    }
-    else if(delAwayFormation == null){
-        delHomeFormation.remove();
-    } 
-    else {
-        delHomeFormation.remove();
-        delAwayFormation.remove();
-    }*/
 }
+
 
 
 

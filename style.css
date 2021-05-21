@@ -1,22 +1,77 @@
+body {
+  background-color: black;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+fieldset{
+  background-color: blue;
+  color: white;
+}
+
+.formation{
+  /*width:25%;
+  height:25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;*/
+  background-color: darkgreen;
+  border: solid white;
+  
+ 
+}
+
+.home-formation{
+  /*width:max-content;*/
+  height:25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-bottom: solid white;
+
+}
+
+
+
+.away-formation{
+  /*width:max-content;*/
+  height:25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  border-top: solid white;
+  
+
+}
+
 
 
 
 .Goalkeepers{
     display:flex;
-    margin: 10px auto;
+    margin: auto;
     width: max-content;
     height: max-content;
+    border-right: solid white;
+    border-left: solid white;
+    padding-right: 60px;
+    padding-left: 60px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
     
 }
 
 .Goalkeeper{
     border: solid black;
+    border-radius: 50%;
     width: 4em;
     height: 4em;
     text-align:center;
     vertical-align: middle;
     line-height: 4em;
-    background-color: yellow;
+    cursor: move;
+
+    
 }
 
 .Defenders{
@@ -24,17 +79,22 @@
     margin: 10px auto;
     width: max-content;
     height: max-content;
+    
 }
 
 .Defender{
     border: solid black;
+    border-radius: 50%;
     margin: 20px;
     width: 4em;
     height: 4em;
-    background-color: darkblue;
+    
     text-align:center;
     vertical-align: middle;
     line-height: 4em;
+    cursor: move;
+    color:white;
+    
 }
 
 .Midfielders{
@@ -42,17 +102,22 @@
     margin: 10px auto;
     width: max-content;
     height: max-content;
+    position: relative;
+    
 }
 
 .Midfielder{
     border: solid black;
+    border-radius: 50%;
     margin: 20px;
     width: 4em;
     height: 4em;
     text-align:center;
     vertical-align: middle;
     line-height: 4em;
-    background-color: darkgreen;
+    cursor: move;
+    color:white;
+    
 }
 
 .Strikers{
@@ -60,36 +125,26 @@
     margin: 10px auto;
     width: max-content;
     height: max-content;
+    position: relative;
+    
+    
 }
 
 .Striker{
     border: solid black;
+    border-radius: 50%;
     margin: 20px;
     width: 4em;
     height: 4em;
-    background-color: darkred;
+    
     text-align:center;
     vertical-align: middle;
     line-height: 4em;
+    cursor: move;
+    color:white;
 }
 
-.formation{
-    /*width:25%;
-    height:25%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;*/
-   
-}
 
-.home-formation{
-    width:25%;
-    height:25%;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-
-}
 
 /*.dropdown-h{
     position: relative;
