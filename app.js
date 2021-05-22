@@ -365,9 +365,16 @@ class Formation{
         }
         Formation.numFormations+=1;
         $(".Goalkeeper").draggable();
+       // $(".Goalkeeper").draggable("option", "containment", "document");
+       // $(".Goalkeeper").droppable("option", "scope", ".Defender");
+        //$(".Defender").droppable("option","accept", ".Goalkeeper");
         $(".Defender").draggable();
+       // $(".Defender").draggable("option", "containment", "document");
+        //$(".Defender").droppable("option", "scope", ".Midfielder");
         $(".Midfielder").draggable();
+       // $(".Midfielder").draggable("option", "containment", "document");
         $(".Striker").draggable();
+       // $(".Striker").draggable("option", "containment", "document");
     }
 
 
