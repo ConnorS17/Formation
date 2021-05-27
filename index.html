@@ -9,105 +9,79 @@
     <title>Formations</title>
 </head>
 <body>
-
-    <!--
-        <div class = "dropdown-h">
-        <button class = "dropbtn-h">Home Formation</button>
-        
-        <div class = "dropdown-content-h">
-            <button class = "formation-button" >3-4-3</button>
-            <button class = "formation-button" >3-4-2-1</button>
-            <button class = "formation-button">3-5-2</button>
-            <button class = "formation-button" >3-2-3-2</button>
-            <button class = "formation-button" >4-3-3</button>
-            <button class = "formation-button" >4-2-3-1</button>
-            <button class = "formation-button" >4-3-2-1</button>
-            <button class = "formation-button" >4-2-2-2</button>
-            <button class = "formation-button" >4-4-2</button>
-        </div>
-
-    <div class = "dropdown-a">
-        <button class = "dropbtn-a">Away Formation</button>
-            
-        <div class = "dropdown-content-a">
-            <button class = "formation-button" >3-4-3</button>
-            <button class = "formation-button" >3-4-2-1</button>
-            <button class = "formation-button">3-5-2</button>
-            <button class = "formation-button" >3-2-3-2</button>
-            <button class = "formation-button" >4-3-3</button>
-            <button class = "formation-button" >4-2-3-1</button>
-            <button class = "formation-button" >4-3-2-1</button>
-            <button class = "formation-button" >4-2-2-2</button>
-            <button class = "formation-button" >4-4-2</button>
-            </div>
-    -->
-
     <form>
         <fieldset>
             <legend>Formations</legend>
+            <div id = "container">
+                <div class = "select-container">
+                    <div>
+                        <label>Home</label>
+                    </div>
+        
+                    <div> 
+                        <input name = "formation-home" list="formation-list" type="text">
+                        <datalist id = "formation-list">
+                            <option value = "3-5-2">3-5-2</option>
+                            <option value = "3-4-3">3-4-3</option>
+                            <option value = "3-4-2-1">3-4-2-1</option>
+                            <option value = "4-3-3">4-3-3</option>
+                            <option value = "4-2-3-1">4-2-3-1</option>
+                            <option value = "4-4-1-1">4-4-1-1</option>
+                            <option value = "4-4-2">4-4-2</option>
+                        </datalist>
+                    </div>
+                    <br>
+                    
+                    <div>
+                        <label>Away</label>
+                    </div>
+        
+                    <div> 
+                        <input name = "formation-away" list="formation-list" type="text">
+                        <datalist id = "formation-list">
+                            <option value = "3-5-2">3-5-2</option>
+                            <option value = "3-4-3">3-4-3</option>
+                            <option value = "3-4-2-1">3-4-2-1</option>
+                            <option value = "4-3-3">4-3-3</option>
+                            <option value = "4-2-3-1">4-2-3-1</option>
+                            <option value = "4-4-1-1">4-4-1-1</option>
+                            <option value = "4-4-2">4-4-2</option>
+                        </datalist>
+                    </div>
+        
+                </div>
+    
+                <div id = "color-select" class = "select-container">
+                    <div>
+                        <label>Home Color</label>
+                    </div>
+        
+                    <div> 
+                        <input name = "color-home" type = "color" id = "color-home">
+                    </div>
+                    <br>
+                    
+                    <div>
+                        <label>Away Color</label>
+                    </div>
+        
+                    <div> 
+                        <input name = "color-away" type = "color" id = "color-away">
+                    </div>
+                </div>
 
-            <div>
-                <label>Home</label>
-            </div>
+                <button class = "clear">Clear</button>
 
-            <div> 
-                <input name = "formation-home" list="formation-list" type="text">
-                <datalist id = "formation-list">
-                    <option value = "3-4-3">3-4-3</option>
-                    <option value = "3-4-2-1">3-4-2-1</option>
-                    <option value = "4-3-3">4-3-3</option>
-                    <option value = "4-2-3-1">4-2-3-1</option>
-                    <option value = "4-4-2">4-4-2</option>
-                </datalist>
             </div>
-            <br>
-            
-            <div>
-                <label>Away</label>
-            </div>
-
-            <div> 
-                <input name = "formation-away" list="formation-list" type="text">
-                <datalist id = "formation-list">
-                    <option value = "3-4-3">3-4-3</option>
-                    <option value = "3-4-2-1">3-4-2-1</option>
-                    <option value = "4-3-3">4-3-3</option>
-                    <option value = "4-2-3-1">4-2-3-1</option>
-                    <option value = "4-4-2">4-4-2</option>
-                </datalist>
-            </div>
-
         </fieldset>
     </form>
+    <br>
     
 
-    
-
-        
-
-    </div>
-
-
-    </div>
-    <button class = "clear">Clear</button>
-    
     <div class = "formation">
-        <!-- Containers <div class = "new"></div>
-        <br>
-        <div class = "new">
-            <div class = "small"></div>
-            <div class = "small"></div>
-        </div> -->
-
-
-
-        
-        
-        
-
-
-
+        <!-- Containers-->
     </div>
+    <!--<div id = "center-circle"></div>-->
     
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

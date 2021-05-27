@@ -4,8 +4,53 @@ body {
 }
 
 fieldset{
-  background-color: blue;
+  background-color:darkslateblue;
   color: white;
+}
+
+legend{
+  font-size: 1.5em;
+}
+
+#container{
+  display:flex;
+  width: max-content;
+  height: max-content;
+  margin: auto;
+}
+
+.select-container{
+  padding: 0 100px 0 100px;
+}
+
+#color-select{
+  transform: translateY(-4px);
+}
+
+#color-home{
+  height: 2em;
+  cursor: pointer;
+}
+
+#color-away{
+  height: 2em;
+  cursor: pointer;
+}
+
+.clear{
+  background-color: darkorange;
+  color: white;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.clear:hover{
+  box-shadow:  0px 8px 16px 0px black;
+  border: solid black;
+  font-size: 1.15rem;
+  cursor:pointer;
 }
 
 .formation{
@@ -14,7 +59,6 @@ fieldset{
 }
 
 .home-formation{
-  /*width:max-content;*/
   height:25%;
   margin: auto;
   display: flex;
@@ -23,12 +67,34 @@ fieldset{
 }
 
 .away-formation{
-  /*width:max-content;*/
   height:25%;
   margin: auto;
   display: flex;
   flex-direction: column;
   border-top: solid white;
+}
+
+#ball{
+  z-index: 2;
+  border-radius: 50%;
+  background-color: white;
+  border-color: solid black;
+  width: 1em;
+  height: 1em;
+  transform: translate(660px, -10px);
+}
+
+#center-circle{
+  z-index: 0;
+  border-radius: 50%;
+  border: solid white;
+  width: 6em;
+  height: 6em;
+  position: absolute;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .Goalkeepers{
@@ -140,78 +206,6 @@ fieldset{
     box-shadow:  0px 8px 16px 0px black;
 }
 
-
-
-/*.dropdown-h{
-    position: relative;
-    display: inline-block;
-}
-
-.dropbtn-h{
-    background-color: #04AA6D;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .dropdown-content-h {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content-h button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content-h button:hover {background-color: #ddd;}
-  
-  .dropdown-h:hover .dropdown-content-h {display: block;}
-  
-  .dropdown-h:hover .dropbtn-h {background-color: #3e8e41;}
-
-  .dropdown-a{
-    position: relative;
-    display: inline-block;
-  }
-
-  .dropbtn-a{
-    background-color: #aa0f04;
-    color: white;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
-  }
-  
-  .dropdown-content-a {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-  }
-  
-  .dropdown-content-a button {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  .dropdown-content-a button:hover {background-color: rgb(221, 221, 221);}
-  
-  .dropdown-a:hover .dropdown-content-a {display: block;}
-  
-  .dropdown-a:hover .dropbtn-a {background-color: #aa0f04;}
-  */
   
 
 
