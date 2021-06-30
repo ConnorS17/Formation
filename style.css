@@ -1,15 +1,17 @@
 body {
   background-color: black;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-family: Arial, Helvetica, sans-serif
 }
 
 fieldset{
   background-color:darkslateblue;
   color: white;
+  box-shadow:  0px 8px 16px 0px white;
 }
 
 legend{
   font-size: 1.5em;
+  text-shadow: 2px 8px 16px white;
 }
 
 #container{
@@ -30,58 +32,150 @@ legend{
 #color-home{
   height: 2em;
   cursor: pointer;
+  padding:0;
 }
 
 #color-away{
   height: 2em;
   cursor: pointer;
+  padding:0;
+}
+
+.button-container{
+  display: flex;
+  margin: auto 0;
 }
 
 .clear{
-  background-color: darkorange;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: darkred;
   color: white;
   border-radius: 50%;
-  width: 5em;
-  height: 5em;
-  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  width: 67px;
+  height: 67px;
+  margin-right: 5px;
+  transform: translateY(2px);
+  
 }
 
 .clear:hover{
   box-shadow:  0px 8px 16px 0px black;
   border: solid black;
-  font-size: 1.15rem;
+  font-size: 0.75rem;
   cursor:pointer;
+}
+
+#path-button{
+  color: white;
+  border-radius: 50%;
+  border: thin solid white;
+  width: 65px;
+  height: 65px;
+  line-height: 67px;
+  text-align: center;
+  font-size: 60%;
+  margin-left: 5px;
+}
+
+#path-button:hover{
+  opacity: 0.9;
+  border: solid yellow;
+  cursor: pointer;
+  box-shadow:  0px 8px 16px 0px yellow;
+}
+
+#path-clear-button{
+  background-color: darkblue;
+  border: thin solid black;
+  color: white;
+  border-radius: 50%;
+  width: 65px;
+  height: 65px;
+  line-height:65px;
+  text-align: center;
+  font-size: 75%;
+  margin-right: 5px;
+  margin-left: 5px;
+  transform: translateY(2px);
+}
+
+#path-clear-button:hover{
+  box-shadow:  0px 8px 16px 0px black;
+  border: solid black;
+  font-size: 0.65rem;
+  cursor: pointer;
+}
+
+#text-box-button{
+font-size: 75%;
+background-color: darkgoldenrod;
+width: 65px;
+height: 65px;
+margin-right: 5px;
+margin-left: 5px;
+line-height: 65px;
+text-align: center;
+border:thin solid white;
+}
+
+#text-box-button:hover{
+  border: thin solid black;
+}
+
+#text-box-clear{
+font-size: 75%;
+background-color: darkorange;
+width: 65px;
+height: 65px;
+margin-right: 5px;
+margin-left: 5px;
+line-height: 65px;
+text-align: center;
+border:thin solid white;
+}
+
+#text-box-clear:hover{
+  border: thin solid black;
 }
 
 .formation{
   background-color: darkgreen;
+  height: 1238px;
   border: solid white;
+  box-shadow: 0px 8px 16px 0px white;
 }
 
 .home-formation{
-  height:25%;
+  /*height:25%;*/
+  height: 616px;
+  min-width: 1200px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  border-bottom: solid white;
 }
 
 .away-formation{
-  height:25%;
+  height: 616px;
+  min-width: 1200px;
   margin: auto;
   display: flex;
   flex-direction: column;
-  border-top: solid white;
 }
 
 #ball{
   z-index: 2;
   border-radius: 50%;
   background-color: white;
-  border-color: solid black;
+  border: solid black;
   width: 1em;
   height: 1em;
-  transform: translate(660px, -10px);
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 800px;
+  margin-right: auto;
+  margin-left: auto;
+  /*transform: translate(660px, -10px);*/
 }
 
 #center-circle{
@@ -93,21 +187,63 @@ legend{
   position: absolute;
   right: 0;
   left: 0;
+  top: 760px;
   margin-right: auto;
   margin-left: auto;
 }
+
+#center-line{
+  z-index: 0;
+  border:solid white;
+  position: absolute;
+  right: 0;
+  left: 0;
+  top: 808px;
+  margin-right: auto;
+  margin-left: auto;
+  width:1324px;
+}
+
+.penalty-area{
+  z-index: 0;
+  width:196px;
+  height:93px;
+  right: 0;
+  left: 0;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#home-box{
+  position: absolute;
+  top:198px;
+  border:solid white;
+  border-top: none;
+}
+
+#away-box{
+  position: absolute;
+  top:1342px;
+  border:solid white;
+  border-bottom: none;
+}
+
+.text-box{
+  z-index:1;
+  background-color: white;
+  border:black;
+  width: 20em;
+  top:-750px;
+  left:635px;
+  overflow-wrap: anywhere;
+}
+
 
 .Goalkeepers{
     display:flex;
     margin: auto;
     width: max-content;
     height: max-content;
-    border-right: solid white;
-    border-left: solid white;
-    padding-right: 60px;
-    padding-left: 60px;
-    padding-top: 10px;
-    padding-bottom: 10px;
 }
 
 .Goalkeeper{
@@ -148,8 +284,8 @@ legend{
 }
 
 .Defender:hover{
-  border: solid gold;
-  box-shadow:  0px 8px 16px 0px black;
+    border: solid gold;
+    box-shadow:  0px 8px 16px 0px black;
 }
 
 .Midfielders{
@@ -204,7 +340,17 @@ legend{
 .Striker:hover {
     border: solid gold;
     box-shadow:  0px 8px 16px 0px black;
+} 
+
+.path{
+  position: absolute;
+  z-index: 0;
+  height:0;
+  border: 0.5px dotted yellow;
 }
+
+
+
 
   
 
