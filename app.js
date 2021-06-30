@@ -5,12 +5,10 @@ class Formation{
     static homeSize = 0;
     static awayTeam = 0;
     static awaySize = 0;
-    static ball = 0;
 
     constructor(formationText, team = "home"){
         this.formationText = formationText;
         this.team = team;
-        //this.displayFormation(formationText);
     }
 
     updateFormation(formationText){
@@ -19,71 +17,14 @@ class Formation{
         this.uniquePositions = this.formationTextArray.length;
     }
 
-    displayCenterCircle(){
-        if (Formation.awayTeam < 1) return;
-        if (Formation.numFormations < 2) return;
-        if (document.querySelector("center-circle") != null) return;
-        let body = document.getElementsByTagName("body")[0];
-        let centerCircle = document.createElement("div");
-        centerCircle.id = "center-circle";
-        body.appendChild(centerCircle);
-        if (Formation.homeSize == 3 ){ //&& Formation.awaySize == 3
-            //centerCircle.style.left = "2.75px";
-            centerCircle.style.top = "625px";
-        }
-        /*else if (homeFormationSize == 1 && awayFormationSize == 2){
-            centerCircle.style.left = "-1px";
-            centerCircle.style.top = "622px";
-
-        }
-        else if (homeFormationSize == 2 && awayFormationSize == 2){
-            centerCircle.style.left = "-2.25px";
-            centerCircle.style.top = "750px";
-        }*/
-        else{
-            centerCircle.style.top = "750px";
-        }
-       
-        $("#center-circle").draggable();
-    }
-
-    displayClearCenterCircle(){
-        let centerCircle = document.querySelector('#center-circle');
-        if (centerCircle == null){
-            return;
-        }
-        centerCircle.remove();
-    }
-
-    displayBall(){
-        if (Formation.ball == 1){
-            return;
-        }
-        let ballDiv = document.createElement("div");
-        ballDiv.id = "ball";
-        let body = document.getElementsByTagName("body")[0];
-        body.appendChild(ballDiv);
-        $("#ball").draggable();
-        Formation.ball += 1;
-    }
-
-    displayClearBall(){
-        let ballDiv = document.querySelector('#ball');
-        if (ballDiv == null){
-            return;
-        }
-        ballDiv.remove();
-        Formation.ball -= 1;
-    }
-
     displayClearHome(){
         let delHomeFormation = document.querySelector('.home-formation');
         if (delHomeFormation == null){
             return;
         }
-        delHomeFormation.remove();
-        Formation.numFormations -= 1;
-        Formation.homeTeam -= 1;
+            delHomeFormation.remove();
+            Formation.numFormations -= 1;
+            Formation.homeTeam -= 1;
     }
 
     displayClearAway(){
@@ -91,12 +32,72 @@ class Formation{
         if (delAwayFormation == null){
             return;
         }
-        delAwayFormation.remove();
-        Formation.numFormations -= 1;
-        Formation.awayTeam -= 1;
+            delAwayFormation.remove();
+            Formation.numFormations -= 1;
+            Formation.awayTeam -= 1;
+    }
+    //add path functionality
+    path(){
+        let defenders = document.querySelectorAll('.Defender');
+        let midfielders = document.querySelectorAll('.Midfielder');
+        let strikers = document.querySelectorAll('.Striker');
+        
+        defenders.forEach(defender => {
+            defender.onmousedown = function(){
+                pressed = true;
+                offset(defender);
+                interval = true;
+                loop = setInterval(function(){
+                    offset(defender);
+                    if (pathToggle) document.body.appendChild(createLine(xI,yI,xF,yF));
+                }, 500);
+            }
+
+            defender.onmouseup = function(){
+                pressed = false;
+                interval = false;
+                clearInterval(loop);
+            }
+        });
+
+        midfielders.forEach(midfielder => {
+            midfielder.onmousedown = function(){
+                pressed = true;
+                offset(midfielder);
+                interval = true;
+                loop = setInterval(function(){
+                    offset(midfielder);
+                    if (pathToggle) document.body.appendChild(createLine(xI,yI,xF,yF));
+                }, 500);
+            }
+            
+            midfielder.onmouseup = function(){
+                pressed = false;
+                interval = false;
+                clearInterval(loop);
+            }
+        });
+
+        strikers.forEach(striker => {
+            striker.onmousedown = function(){
+                pressed = true;
+                offset(striker);
+                interval = true;
+                loop = setInterval(function(){
+                    offset(striker);
+                    if (pathToggle) document.body.appendChild(createLine(xI,yI,xF,yF));
+                }, 500);
+            }
+            
+            striker.onmouseup = function(){
+                pressed = false;
+                interval = false;
+                clearInterval(loop);
+            }
+        });
     }
 
-
+    
     displayFormation(formationText){
         console.log(Formation.homeTeam, Formation.awayTeam);
         Formation.numFormations+=1;
@@ -114,12 +115,11 @@ class Formation{
             Formation.homeSize = this.formationTextArray.length;
             const homeFormation = document.createElement("div");
             homeFormation.classList.add('home-formation');
-
+            // if statements to make sure home team is above away team on screen
             if (Formation.homeTeam == 1 && Formation.awayTeam ==1){
                 let awayForm = document.querySelector('.away-formation');
                 this.displayClearHome();
-                this.displayClearCenterCircle();
-                awayForm.before(homeFormation);
+                    awayForm.before(homeFormation);
             }
 
             else if (Formation.awayTeam == 1) {
@@ -144,14 +144,13 @@ class Formation{
             gks.appendChild(gk);
             gk.innerText = 1;
             gk.setAttribute("contenteditable", "true");
-            gks.style.borderBottom = "solid white";
             gk.style.backgroundColor = "yellow";
 
             const defenders = document.createElement("div");
             const midfielders = document.createElement("div");
             const strikers = document.createElement("div");
             shirtNum = 2;
-
+            //for each unique position, iterate accordingly through all the players to display them 
             switch (this.uniquePositions) {
                 case 3:
                     numDefenders = parseInt(this.formationTextArray[0]);
@@ -292,13 +291,11 @@ class Formation{
 
             }
             Formation.homeTeam+=1;
-            if (Formation.homeTeam == 1) this.displayCenterCircle();
         }
 
         else {
             if (Formation.awayTeam == 1){
                 this.displayClearAway();
-                this.displayClearCenterCircle();
             }
             Formation.awaySize = this.formationTextArray.length;
 
@@ -310,7 +307,6 @@ class Formation{
             const midfielders = document.createElement("div");
             const defenders = document.createElement("div");
             const gks = document.createElement("div");
-            gks.style.borderTop = "solid white";
 
             shirtNum = 11;
             
@@ -454,20 +450,26 @@ class Formation{
             gk.setAttribute("contenteditable", "true");
             gk.style.backgroundColor = "purple";
             Formation.awayTeam+=1;
-            this.displayCenterCircle();
+            
         }
-       
-        this.displayBall();
+        //make all players draggable and add path capability
         $(".Goalkeeper").draggable();
         $(".Defender").draggable();
         $(".Midfielder").draggable();
         $(".Striker").draggable();
+        this.path();
     }
 
 }
 
+// initialize variables, and get html elements
 const formationContainer = document.querySelector(".formation");
 const clearButton = document.querySelector(".clear");
+const pathButton = document.querySelector("#path-button");
+const textButton = document.querySelector("#text-box-button");
+const textClearButton = document.querySelector("#text-box-clear");
+pathButton.style.backgroundColor = "red";
+const pathClearButton = document.querySelector("#path-clear-button");
 const formationList = document.querySelectorAll("option");
 
 let inputHome = document.getElementsByName("formation-home")[0];
@@ -481,22 +483,20 @@ colorAway.value = defaultAway;
 colorHome.select();
 colorAway.select();
 //$("#center-circle").draggable();
-
-
-let homeFormationText;
-let awayFormationText;
+$("#ball").draggable();
 let formationText;// = "4-4-2;
 
+// create two formations (home and away)
 const homeFormation = new Formation(formationText);
 const awayFormation = new Formation(formationText,"away");
 
-clearButton.addEventListener("click", displayClear);
 
+// event listeners for formation selecting
 inputHome.addEventListener("input", () => {
     formationText = inputHome.value;
     console.log(formationText);
-    if (formationText.length < 5) return;
-    homeFormation.displayFormation(formationText);
+    if (formationText.length < 5) return; // guard so incorrect formations do not appear
+    homeFormation.displayFormation(formationText); //display formation on screen
 })
 
 inputAway.addEventListener("input", () => {
@@ -506,7 +506,7 @@ inputAway.addEventListener("input", () => {
     awayFormation.displayFormation(formationText);
 })
 
-
+// color selecting implementation
 colorHome.addEventListener("change", updateHomeColor);
 
 function updateHomeColor(event){
@@ -516,14 +516,20 @@ function updateHomeColor(event){
         let strikers =  document.querySelectorAll('.Striker-Home');
 
         defenders.forEach(defender =>{
+            defender.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) defender.style.color = "#000000"; // no white on white
             defender.style.backgroundColor = event.target.value;
         })
 
         midfielders.forEach(midfielder => {
+            midfielder.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) midfielder.style.color = "#000000";
             midfielder.style.backgroundColor = event.target.value;
         })
 
         strikers.forEach(striker => {
+            striker.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) striker.style.color = "#000000";
             striker.style.backgroundColor = event.target.value;
         })
     }
@@ -538,27 +544,134 @@ function updateAwayColor(event){
         let strikers =  document.querySelectorAll('.Striker-Away');
 
         defenders.forEach(defender =>{
+            defender.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) defender.style.color = "#000000";
             defender.style.backgroundColor = event.target.value;
         })
 
         midfielders.forEach(midfielder => {
+            midfielder.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) midfielder.style.color = "#000000";
             midfielder.style.backgroundColor = event.target.value;
         })
 
         strikers.forEach(striker => {
+            striker.style.color = "#ffffff";
+            if(event.target.value.includes("#ffffff")) striker.style.color = "#000000";
             striker.style.backgroundColor = event.target.value;
         })
     }
 }
 
+//clear button implementation
+clearButton.addEventListener("click", displayClear);
 
 function displayClear(){
     homeFormation.displayClearHome();
     awayFormation.displayClearAway();
-    homeFormation.displayClearBall();
+    removePath();
+    removeTextBox();
 }
 
+//text box
+textButton.addEventListener("click",insertTextBox);
 
+function insertTextBox(){
+    const textBox = document.createElement('div');
+    textBox.classList.add('text-box');
+    document.body.appendChild(textBox);
+    textBox.setAttribute("contenteditable", "true");
+    $(".text-box").draggable();
+}
 
+textClearButton.addEventListener("click",removeTextBox);
 
+function removeTextBox(){
+    let boxes = document.querySelectorAll('.text-box');
+    if (boxes == null) return;
+    boxes.forEach(box => box.remove());
+}
 
+// path animations
+let pressed = false;
+let interval = false;
+let pathToggle = false;
+var loop; //for setInterval and clearInterval
+let xI ; //initial x coord
+let xF ; //final x coord
+let yI ; //initial y coord
+let yF ; //final y coord
+
+// turn paths on or off
+pathButton.addEventListener("click", pathSwitch);
+
+function pathSwitch(){
+    if (pathToggle) {
+        pathToggle = false;
+        pathButton.innerText = "Path: OFF";
+        pathButton.style.backgroundColor = "red";
+    }
+    else{
+        pathToggle = true;
+        pathButton.innerText = "Path: ON";
+        pathButton.style.backgroundColor = "green";
+    }
+}
+
+// delete paths
+pathClearButton.addEventListener("click",removePath);
+
+function removePath(){
+    let lines = document.querySelectorAll('.path');
+    if (lines == null) return;
+    lines.forEach(line => line.remove());
+}
+
+//path implementation
+
+//update coordinates
+function offset(e) {
+    let rect = e.getBoundingClientRect(),
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    if (pressed && interval){
+        xI = xF;
+        yI = yF;
+        xF = rect.left + scrollLeft + 35; //+35 since initial position is top left corner, width/height 70px
+        yF = rect.top + scrollTop + 35;
+    }
+    else if (pressed) {
+        xI = rect.left + scrollLeft + 35;
+        yI = rect.top + scrollTop + 35;
+        xF = xI;
+        yF = yI;
+    }
+    else return;
+}
+
+//display lines for path
+function createLineElement(x, y, length, angle) {
+    let line = document.createElement("div");
+    line.classList.add('path');
+    let styles ='width: ' + length + 'px; '
+               + '-moz-transform: rotate(' + angle + 'rad); '
+               + '-webkit-transform: rotate(' + angle + 'rad); '
+               + '-o-transform: rotate(' + angle + 'rad); '  
+               + '-ms-transform: rotate(' + angle + 'rad); '  
+               + 'top: ' + y + 'px; '
+               + 'left: ' + x + 'px; ';
+    line.setAttribute('style', styles);  
+    return line;
+}
+
+function createLine(x1, y1, x2, y2) {
+    var a = x1 - x2,
+        b = y1 - y2,
+        c = Math.sqrt(a * a + b * b);
+    var sx = (x1 + x2) / 2,
+        sy = (y1 + y2) / 2;
+    var x = sx - c / 2,
+        y = sy;
+    var alpha = Math.PI - Math.atan2(-b, a);
+    return createLineElement(x, y, c, alpha);
+}
